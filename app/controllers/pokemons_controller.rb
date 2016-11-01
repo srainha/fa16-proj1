@@ -2,25 +2,22 @@ class PokemonsController < ApplicationController
 
   def capture
   	Pokemon.find_by(id: params[:id]).update_attribute(:trainer, current_trainer)
-	redirect_to :root
+	  redirect_to :root
   end
 
   def damage
-  	pok = params[:pok]
-  	curr = Pokemon.find_by(name: pok[0], level: pok[1], health: pok[2])
-  	hel = curr[:health]
-  	curr.update_attribute(:health, (hel - 10))
-  	if (hel - 10) <= 0
-  		curr.destroy
+  	pokemon = params[:pokemon]
+  	current_pokemon = Pokemon.find_by(name: pokemon[0], level: pokemon[1], health: pokemon[2])
+  	health = current_pokemon[:health]
+  	current_pokemon.update_attribute(:health, (health - 10))
+  	if (health - 10) <= 0
+  		current_pokemon.destroy
   	end
-	redirect_to(:back)
+	  redirect_to(:back)
   end
 
   def new
-    @user = current_trainer
     @new_pokemon = Pokemon.new
-    p "IN NEW"
-    p flash[:error]
     render 'new'
   end
 
@@ -32,11 +29,7 @@ class PokemonsController < ApplicationController
       return
     end
     flash[:error] = @pokemon.errors.full_messages.to_sentence
-    p " AQUI"
-    p @pokemon.errors.full_messages.to_sentence
-    p flash[:error]
     flash.keep
     return new
   end
-
 end

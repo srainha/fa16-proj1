@@ -16,6 +16,9 @@ It takes you back to the current page as long as no refferer or session authenti
 
 # Question 5: Explain how putting this line "flash[:error] = @pokemon.errors.full_messages.to_sentence" shows error messages on your form.
 
+The right side of that statement is just a string explaining the error and it was produced when we failed to save @pokemon.
+The left side is a hash that the view has access to and its a special ruby thing that shows the error message in a red bar at the top of the page.
+
 # Give us feedback on the project and decal below!
 
 # Extra credit: Link your Heroku deployed app
