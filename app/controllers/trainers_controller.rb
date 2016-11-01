@@ -10,4 +10,10 @@ class TrainersController < ApplicationController
     @pokemons = Pokemon.where(trainer: @trainer).pluck(:name, :level, :health)
   end
 
+  def current
+  	@trainer = current_trainer
+  	@pokemons = Pokemon.where(trainer: @trainer).pluck(:name, :level, :health)
+  	render 'show'
+  end
+
 end

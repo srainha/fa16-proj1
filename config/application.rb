@@ -22,6 +22,8 @@ module RailsdecalProj1
 
     # For Foundation 5
     config.assets.precompile += %w( vendor/modernizr )
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
 
   end
 end

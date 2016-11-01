@@ -1,0 +1,10 @@
+<p>Create a Pokemon</p>
+
+<p>
+  <%= flash[:error] unless flash[:error].blank? %>
+</p>
+
+<%= simple_form_for @new_pokemon, url: {action: "create"} do |f| %>
+  <%= f.input :name %>
+  <%= f.button :submit %>
+<% end %>
